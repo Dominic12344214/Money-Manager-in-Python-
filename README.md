@@ -1,4 +1,4 @@
-💰 Nest: A Personal Savings Tracker
+A Personal Savings Tracker
 Nest is a simple command-line application for managing your personal finances. It allows you to track savings, spending, and goal-oriented saving in a straightforward, interactive way. All your financial data is stored in a JSON file for persistence between sessions.
 
 🛠 Features
