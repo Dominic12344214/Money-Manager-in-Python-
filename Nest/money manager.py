@@ -139,8 +139,8 @@ SELECT FUNCTION
     elif selection == "2":
         print("""
 1. Remove from savings
-2. Remove from goal wallet
-3. Remove from spending
+2. Remove from spending
+3. Remove from goal wallet
 """)
 
         selection_b = get_valid_selection("Choose an option: ", ["1", "2", "3"])
@@ -155,7 +155,7 @@ SELECT FUNCTION
                 data["balance"] -= amount
                 print(f"Your new savings balance is: ${data['balance']:.2f}")
 
-        elif selection_b == "2":
+        elif selection_b == "3":
             if amount > data["goal_wallet"]:
                 print("Insufficient funds.")
 
@@ -163,7 +163,7 @@ SELECT FUNCTION
                 data["goal_wallet"] -= amount
                 print(f"Your new goal balance is: ${data['goal_wallet']:.2f}")
 
-        elif selection_b == "3":
+        elif selection_b == "2":
 
             if amount > data["spending_balance"]:
                 print("Insufficient funds.")
