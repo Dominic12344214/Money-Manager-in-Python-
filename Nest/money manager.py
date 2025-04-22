@@ -66,11 +66,12 @@ while True:
 SELECT FUNCTION
 1. Add money
 2. Remove money
-3. Goal
-4. Exit
+3. transfer money
+4. Goal
+5. Exit
 """)
 
-    selection = get_valid_selection("Enter number corresponding with function: ", ["1", "2", "3", "4"])
+    selection = get_valid_selection("Enter number corresponding with function: ", ["1", "2", "3", "4", "5"])
 
     # Add money
     if selection == "1":
@@ -134,7 +135,6 @@ SELECT FUNCTION
         save_data()
         input("Press Enter to continue...")
 
-
     # Remove money
     elif selection == "2":
         print("""
@@ -176,8 +176,140 @@ SELECT FUNCTION
         input("Press Enter to continue...")
 
 
-    # Goal
+    #transfer money
     elif selection == "3":
+        print("""
+        1. transfer from savings 
+        2. transfer from spending 
+        3. transfer from goal
+        """)
+
+        selection_e =  get_valid_selection("choose an option: ", ["1", "2", "3"])
+
+        #from savings
+        if selection_e == "1":
+            print("""
+            1. Transfer to spending 
+            2. Transfer to goal
+            """)
+            
+            selection_f = get_valid_selection("choose an option: ", ["1", "2"])
+
+            #saving to spending
+            if selection_f == "1":
+                amount = get_valid_float("move from savings to spending: $")
+
+                if data > ["balance"]:
+                    print("Insufficient funds.")
+
+                else:
+                    data["balance"] -= amount
+                    data["spending_balance"] += amount
+
+                    print(f"Your new balance is: ${data['balance']:.2f}")
+                    print(f"Your new spending balance is: ${data['spending_balance']:.2f}")
+
+                    input("enter to continue")
+
+            elif selection_f == "2":
+                amount = get_valid_float("Move from saving to spending: $")
+
+                if data > ["balance"]:
+                    print("Insufficient funds")
+
+                else:
+                    data["balance"] -= amount
+                    data["goal_wallet"] += amount
+
+                    print(f"your new balance is: ${data["balance"]:.2f}")
+                    print (f"your new goal balance is: ${data["goal_wallet"]:.2f}")
+
+                    input("enter to continue")
+
+        #from spending
+        elif selection_e == "2":
+            print("""
+            1. Transfer to saving 
+            2. Transfer to goal
+            """)
+
+            selection_g = get_valid_selection("choose an option", ["1", "2"])
+
+            #spending to saving
+            if selection_g == "1":
+                amount = get_valid_float("move from spending to saving: $")
+
+                if data > ["spending_balance"]:
+                    print("Insufficient funds")
+                    
+                else:
+                    data["spending_balance"] -= amount
+                    data["balance"] += amount
+                    
+                    print(f"your new spending balance is: ${data["spending_balance"]:.2f}")
+                    print(f"your new saving balance is: ${data["balance"]:.2f}")
+                    
+                    input("enter to continue")
+                    
+            #spending to goals
+            elif selection_g == "2":
+                amount = get_valid_float("move from spending to goals: $")
+                
+                if data > ["spending_balance"]:
+                    print("Insufficient funds")
+                
+                else:
+                    data["spending_balance"] -= amount
+                    data["goal_wallet"] += amount
+                    
+                    print(f"your new spending balance is: ${data["spending_balance"]:.2f}")
+                    print(f"your new goal balance is: ${data["goal_wallet"]:.2f}")
+                    
+                    input("enter to continue")
+                
+        #from goals
+        elif selection_e == "3":
+            print("""
+            1. Transfer to saving
+            2. Transfer to spending
+            """)
+            
+            selection_h = get_valid_selection("choose an option",["1", "2"])
+            
+            #goal to savings
+            if selection_h == "1":
+                amount = get_valid_float("move from goals to savings")
+                
+                if data > ["goal_wallet"]:
+                    print("Insufficient funds")
+                    
+                else:
+                    data["goal_wallet"] -= amount
+                    data["balance"] += amount
+                    
+                    print(f"your new goal balance is: ${data["goal_wallet"]:.2f}")
+                    print(f"your new savings balance is: ${data["balance"]:.2f}")
+                    
+                    input("enter to continue")
+                    
+            #goal to spending
+            elif selection_h == "2":
+                amount = get_valid_float("move from goals to spending: $")
+                
+                if data > ["goal_wallet"]:
+                    print("Insufficient funds")
+                    
+                else:
+                    data["goal_wallet"] -= amount
+                    data["spending_balance"] += amount
+                    
+                    print(f"your new goal balance is: ${data["goal_wallet"]:.f2}")
+                    print(f"your new spending balance is: ${data["spending_balance"]:.f2}")
+                    
+                    input("enter to continue")
+                    
+    # Goal
+    elif selection == "4":
         print("""
 1. Set Goal
 2. View Goal
@@ -209,6 +341,6 @@ SELECT FUNCTION
 
 
     # Exit
-    elif selection == "4":
+    elif selection == "5":
         save_data()
         break
