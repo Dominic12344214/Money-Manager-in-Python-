@@ -139,8 +139,8 @@ SELECT FUNCTION
     elif selection == "2":
         print("""
 1. Remove from savings
-2. Remove from spending
-3. Remove from goal wallet
+2. Remove from goal wallet
+3. Remove from spending
 """)
 
         selection_b = get_valid_selection("Choose an option: ", ["1", "2", "3"])
@@ -155,7 +155,7 @@ SELECT FUNCTION
                 data["balance"] -= amount
                 print(f"Your new savings balance is: ${data['balance']:.2f}")
 
-        elif selection_b == "3":
+        elif selection_b == "2":
             if amount > data["goal_wallet"]:
                 print("Insufficient funds.")
 
@@ -163,7 +163,7 @@ SELECT FUNCTION
                 data["goal_wallet"] -= amount
                 print(f"Your new goal balance is: ${data['goal_wallet']:.2f}")
 
-        elif selection_b == "2":
+        elif selection_b == "3":
 
             if amount > data["spending_balance"]:
                 print("Insufficient funds.")
@@ -199,7 +199,7 @@ SELECT FUNCTION
             if selection_f == "1":
                 amount = get_valid_float("move from savings to spending: $")
 
-                if data > ["balance"]:
+                if amount > data["balance"]:
                     print("Insufficient funds.")
 
                 else:
@@ -214,7 +214,7 @@ SELECT FUNCTION
             elif selection_f == "2":
                 amount = get_valid_float("Move from saving to spending: $")
 
-                if data > ["balance"]:
+                if amount > data["balance"]:
                     print("Insufficient funds")
 
                 else:
@@ -239,7 +239,7 @@ SELECT FUNCTION
             if selection_g == "1":
                 amount = get_valid_float("move from spending to saving: $")
 
-                if data > ["spending_balance"]:
+                if amount > data["spending_balance"]:
                     print("Insufficient funds")
                     
                 else:
@@ -255,7 +255,7 @@ SELECT FUNCTION
             elif selection_g == "2":
                 amount = get_valid_float("move from spending to goals: $")
                 
-                if data > ["spending_balance"]:
+                if amount > data["spending_balance"]:
                     print("Insufficient funds")
                 
                 else:
@@ -280,7 +280,7 @@ SELECT FUNCTION
             if selection_h == "1":
                 amount = get_valid_float("move from goals to savings")
                 
-                if data > ["goal_wallet"]:
+                if amount > data["goal_wallet"]:
                     print("Insufficient funds")
                     
                 else:
@@ -296,7 +296,7 @@ SELECT FUNCTION
             elif selection_h == "2":
                 amount = get_valid_float("move from goals to spending: $")
                 
-                if data > ["goal_wallet"]:
+                if amount > data["goal_wallet"]:
                     print("Insufficient funds")
                     
                 else:
@@ -330,6 +330,7 @@ SELECT FUNCTION
 
             else:
                 progress = (data["goal_wallet"] / data["goal_price"]) * 100
+                
                 print(f"Progress toward '{data['goal']}': {progress:.2f}%")
                 print(f"Your goal balance is: ${data['goal_wallet']:.2f}")
 
