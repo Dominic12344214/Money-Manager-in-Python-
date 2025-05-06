@@ -326,16 +326,18 @@ SELECT FUNCTION
                     
                     input("enter to continue")
 
+
+    #Wallet slots
     elif selection == "4":
         print("""
 1. Create wallet
 2. Remove wallet
  """)
-        selection_i = get_valid_selection("choose an option",["1", "2"])
+        selection_i = get_valid_selection("choose an option", ["1", "2"])
         
+        #create wallet
         if selection_i == "1":
 
-            #wallet slot 1
             if data["wallet_slot_one"] == "" and data["wallet_slot_two"] and data["wallet_slot_three"]:
                 print("""
 Please Select a Slot
@@ -343,9 +345,35 @@ Please Select a Slot
     2. Slot Two
     3. Slot Three
 """)
+                selection_k = get_valid_selection("choose an option", ["1", "2", "3"])
+                
+                #slot one
+                if selection_k == "1":
+                    if data["wallet_slot_one"] != "":
+                         print("slot is already in use")
 
+                    else:
+                        data["wallet_slot_one"] = input("Name Wallet Slot One: ")
+                        print("new wallet named " + data["wallet_slot_one"] + " has been created")
+
+                #slot two
+                elif selection_k == "2":
+                    if data["wallet_slot_two"] != "":
+                        print("slot is already in use")
+
+                    else:
+                        data["wallet_slot_two"] = input("Name Wallet Slot Two: ")
+                        print("new wallet named " + data["wallet_slot_two"] + " has been created")
+
+                #slot three
+                else:
+                    if data["wallet_slot_three"] != "":
+                        print("slot is already in use")
+                    
+                    else:
+                        data["wallet_slot_Three"] = input("Nsme Wallet slot three")
+                        print("new wallet named " + data["wallet_slot_three"] + " has been created")
             
-
 
     # Goal
     elif selection == "5":
@@ -384,3 +412,4 @@ Please Select a Slot
     elif selection == "6":
         save_data()
         break
+
