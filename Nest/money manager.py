@@ -5,6 +5,7 @@ import os
 DATA_FILE = "nest_data.json"
 
 # Default values
+#TODO add all values into nest_data.json
 data = {
     #defalt wallets
     "balance": 0.00,
@@ -373,7 +374,41 @@ Please Select a Slot
                     else:
                         data["wallet_slot_Three"] = input("Nsme Wallet slot three")
                         print("new wallet named " + data["wallet_slot_three"] + " has been created")
-            
+
+            #deleat wallet
+            if selection_i == "2":
+                print("""
+Select slot to remove:
+    1. Slot One
+    2. Slot Two
+    3. Slot Three
+""")
+                selection_j = get_valid_selection("choose an option", ["1", "2", "3"])
+
+                if selection_j == "1":
+                    if data["wallet_slot_one"] == "":
+                        print("slot does not exist")
+
+                    else:
+                        print("are you sure you want to delete " + data["wallet_slot_one"] + "?")
+                        print("Note: all money will be moved from " + data["wallet_slot_one"] + " to savings")
+                        print("""
+1. yes                 
+2. no
+""")
+                        comfermation = get_valid_selection("comfermation: ", ["1", "2"])
+                        
+                        if comfermation == "1":
+                            data["wallet_slot_one"] == ""
+
+                            data["balance"] += data["slot_one_balance"]
+                            data["slot_one_balance"] -= data["slot_one_balance"]
+
+                            print("slot one sucsessfully deleted")
+                            print("your new savings balance is: $" + data["balance"])
+
+
+
 
     # Goal
     elif selection == "5":
@@ -412,4 +447,3 @@ Please Select a Slot
     elif selection == "6":
         save_data()
         break
-
