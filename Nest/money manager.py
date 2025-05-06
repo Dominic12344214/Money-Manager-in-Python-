@@ -18,7 +18,13 @@ data = {
     #wallet slots
     "wallet_slot_one": "",
     "wallet_slot_two": "",
-    "wallet_slot_three": ""
+    "wallet_slot_three": "",
+
+    #slot ballences
+    "slot_one_balance": 0.00,
+    "slot_two_balance": 0.00,
+    "slot_three_balance": 0.00
+
 }
 
 
@@ -328,12 +334,17 @@ SELECT FUNCTION
         selection_i = get_valid_selection("choose an option",["1", "2"])
         
         if selection_i == "1":
-            if data["wallet_slot_one"] == "":
-                if data["wallet_slot_two"] == "":
-                    if data["wallet_slot_three"] == "":
-                        print("""
+
+            #wallet slot 1
+            if data["wallet_slot_one"] == "" and data["wallet_slot_two"] and data["wallet_slot_three"]:
+                print("""
+Please Select a Slot
+    1. Slot One
+    2. Slot Two
+    3. Slot Three
 """)
 
+            
 
 
     # Goal
