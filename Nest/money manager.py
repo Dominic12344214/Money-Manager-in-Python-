@@ -6,12 +6,21 @@ DATA_FILE = "nest_data.json"
 
 # Default values
 data = {
+    #defalt wallets
     "balance": 0.00,
     "spending_balance": 0.00,
     "goal_wallet": 0.00,
+
+    #goal data
     "goal": "",
-    "goal_price": 0.00
+    "goal_price": 0.00,
+
+    #wallet slots
+    "wallet_slot_one": "",
+    "wallet_slot_two": "",
+    "wallet_slot_three": ""
 }
+
 
 # Load from JSON if exists
 if os.path.exists(DATA_FILE):
@@ -63,15 +72,18 @@ while True:
     print("==============================\n")
 
     print("""
+          
+
 SELECT FUNCTION
 1. Add money
 2. Remove money
 3. transfer money
-4. Goal
-5. Exit
+4. Create/Remove wallets
+5. Goal
+6. Exit
 """)
 
-    selection = get_valid_selection("Enter number corresponding with function: ", ["1", "2", "3", "4", "5"])
+    selection = get_valid_selection("Enter number corresponding with function: ", ["1", "2", "3", "4", "5", "6"])
 
     # Add money
     if selection == "1":
@@ -307,9 +319,25 @@ SELECT FUNCTION
                     print(f"your new spending balance is: ${data["spending_balance"]:.f2}")
                     
                     input("enter to continue")
-                    
-    # Goal
+
     elif selection == "4":
+        print("""
+1. Create wallet
+2. Remove wallet
+ """)
+        selection_i = get_valid_selection("choose an option",["1", "2"])
+        
+        if selection_i == "1":
+            if data["wallet_slot_one"] == "":
+                if data["wallet_slot_two"] == "":
+                    if data["wallet_slot_three"] == "":
+                        print("""
+""")
+
+
+
+    # Goal
+    elif selection == "5":
         print("""
 1. Set Goal
 2. View Goal
@@ -342,6 +370,6 @@ SELECT FUNCTION
 
 
     # Exit
-    elif selection == "5":
+    elif selection == "6":
         save_data()
         break
