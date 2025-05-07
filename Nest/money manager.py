@@ -344,6 +344,13 @@ SELECT FUNCTION
 
             selection_j = get_valid_selection("choose an option", ["1", "2", "3"])
 
+            #slot one
+            if selection_j == "1":
+                data["wallet_slot_one"] = input("Name slot: ")
+                
+                print("new slot named " + data["wallet_slot_one"] + " has been created")
+
+
 
 
 
