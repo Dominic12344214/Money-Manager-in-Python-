@@ -5,7 +5,7 @@ import os
 DATA_FILE = "nest_data.json"
 
 # Default values
-#TODO add all values into nest_data.json
+#TODO add all values into nest_data.json ONCE TESTING IS OVER
 data = {
     #defalt wallets
     "balance": 0.00,
@@ -336,6 +336,7 @@ SELECT FUNCTION
 """)
         selection_i = get_valid_selection("choose an option", ["1", "2"])
 
+        #TODO: make a comfermation function; comferm you like to create a slot called_____?
         if selection_i == "1":
             print("Select a slot")
             print("1. " + data["wallet_slot_one"])
@@ -349,6 +350,18 @@ SELECT FUNCTION
                 data["wallet_slot_one"] = input("Name slot: ")
                 
                 print("new slot named " + data["wallet_slot_one"] + " has been created")
+
+            #slot two
+            elif selection_j == "2":
+                data["wallet_slot_two"] = input("Name slot: ")
+
+                print("new slot named " + data["wallet_slot_two"] + " has been created")
+
+            #slot three
+            else:
+                data["wallet_slot_three"] = input("Name Slot: ")
+
+                print("new slot named " + data["wallet_slot_three"] + " has been created")
 
 
 
