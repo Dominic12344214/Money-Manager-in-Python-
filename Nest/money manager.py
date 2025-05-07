@@ -93,6 +93,7 @@ SELECT FUNCTION
     selection = get_valid_selection("Enter number corresponding with function: ", ["1", "2", "3", "4", "5", "6"])
 
     # Add money
+    #TODO: add custom wallets
     if selection == "1":
         print("""
 1. Add to savings
@@ -154,7 +155,9 @@ SELECT FUNCTION
         save_data()
         input("Press Enter to continue...")
 
+
     # Remove money
+    #TODO: add custom wallets
     elif selection == "2":
         print("""
 1. Remove from savings
@@ -380,7 +383,7 @@ SELECT FUNCTION
                     print("slot is empty")
 
                 else:
-                    print("are you sure you want to delete " + data("wallet_slot_one") + "?")
+                    print("are you sure you want to delete " + data["wallet_slot_one"] + "?")
                     print("""
 1. Yes
 2. No
@@ -398,14 +401,50 @@ SELECT FUNCTION
                     else:
                         input("Enter to continue")
 
-                
-                    
+            #slot two
+            elif selection_k == "2":
+                if data["wallet_slot_two"] == "empty slot two":
+                    print("slot is empty")
 
+                else:
+                   print("are you sure you want to delete " + data["wallet_slot_two"] + "?")
+                   print("""
+1. yes
+2. no                                      
+                   """)
+                   confirm = get_valid_selection("confirmation: " ["1", "2"])
 
+                   if confirm == "1":
+                        data["wallet_slot_two"] = "empty slot two"
 
+                        data["balance"] += data["slot_two_balance"]
+                        data["slot_two_balance"] -= data["slot_two_balance"]
 
+                        print("slot two deleted")
 
+            #slot three
+            else:
+                if data["wallet_slot_three"] == "empty slot three":
+                    print("slot is empty")
 
+                else:
+                    print("are you sure you want to delete " + data["wallet_slot_three"] + "?")
+                    print("""
+1. yes
+2. no                   
+                    """)
+                    confirm = get_valid_selection("confirmation: " ["1", "2"])
+
+                    if confirm == "1":
+                        data["wallet_slot_three"] = "empty slot three"
+
+                        data["balance"] += data["slot_three_balance"]
+                        data["slot_three_balance"] -= data["slot_three_balance"]
+
+                        print("slot three deleted")
+
+                    else:
+                        input("Enter to continue")
 
 
     # Goal
