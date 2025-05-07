@@ -375,7 +375,7 @@ Please Select a Slot
                         print("slot is already in use")
                     
                     else:
-                        data["wallet_slot_Three"] = input("Nsme Wallet slot three")
+                        data["wallet_slot_Three"] = input("Name Wallet slot three")
                         print("new wallet named " + data["wallet_slot_three"] + " has been created")
 
             #deleat wallet
