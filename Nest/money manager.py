@@ -332,6 +332,7 @@ SELECT FUNCTION
 
 
     #Wallet slots
+    #TODO: does not work fix everything
     elif selection == "4":
         print("""
 1. Create wallet
@@ -342,7 +343,7 @@ SELECT FUNCTION
         #create wallet
         if selection_i == "1":
 
-            if data["wallet_slot_one"] == "" and data["wallet_slot_two"] and data["wallet_slot_three"]:
+            if data["wallet_slot_one"] and data["wallet_slot_two"] and data["wallet_slot_three"]:
                 print("""
 Please Select a Slot
     1. Slot One
