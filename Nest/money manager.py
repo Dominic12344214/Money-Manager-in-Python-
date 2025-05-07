@@ -21,7 +21,7 @@ data = {
     "wallet_slot_two": "",
     "wallet_slot_three": "",
 
-    #slot ballences
+    #slot balances
     "slot_one_balance": 0.00,
     "slot_two_balance": 0.00,
     "slot_three_balance": 0.00
@@ -93,6 +93,7 @@ SELECT FUNCTION
     selection = get_valid_selection("Enter number corresponding with function: ", ["1", "2", "3", "4", "5", "6"])
 
     # Add money
+    #TODO: add custom wallets
     if selection == "1":
         print("""
 1. Add to savings
@@ -155,6 +156,7 @@ SELECT FUNCTION
         input("Press Enter to continue...")
 
     # Remove money
+    #TODO: add custom wallets
     elif selection == "2":
         print("""
 1. Remove from savings
@@ -195,6 +197,7 @@ SELECT FUNCTION
         input("Press Enter to continue...")
 
 
+    #TODO: add custom wallets
     #transfer money
     elif selection == "3":
         print("""
@@ -385,6 +388,7 @@ Select slot to remove:
 """)
                 selection_j = get_valid_selection("choose an option", ["1", "2", "3"])
 
+                #slot 1
                 if selection_j == "1":
                     if data["wallet_slot_one"] == "":
                         print("slot does not exist")
@@ -396,18 +400,68 @@ Select slot to remove:
 1. yes                 
 2. no
 """)
-                        comfermation = get_valid_selection("comfermation: ", ["1", "2"])
+                        confirmation = get_valid_selection("confirmation: ", ["1", "2"])
                         
-                        if comfermation == "1":
-                            data["wallet_slot_one"] == ""
+                        if confirmation == "1":
+                            data["wallet_slot_one"] = ""
 
                             data["balance"] += data["slot_one_balance"]
                             data["slot_one_balance"] -= data["slot_one_balance"]
 
-                            print("slot one sucsessfully deleted")
+                            print("slot one successfully deleted")
                             print("your new savings balance is: $" + data["balance"])
 
+                        else:
+                            input("enter to continue")
 
+                #slot 2
+                elif selection_j == "2":
+                    if data["wallet_slot_two"] == "":
+                        print("slot does not exist")
+
+                    else:
+                        print("are you sure you want to delete " + data["wallet_slot_two"] + "?")
+                        print("Note: all money will be moved from " + data["wallet_slot_two"] + " to savings")
+                        print("""
+ 1. yes
+ 2. no                       
+                        """)
+                        confirmation = get_valid_selection("confirmation: ", ["1", "2"])
+
+                        if confirmation == "1":
+                            data["wallet_slot_two"] = ""
+
+                            data["balance"] += data["slot_two_balance"]
+                            data["slot_two_balance"] -= data["slot_two_balance"]
+
+                            print("slot two successfully deleted")
+                            print("your new savings balance is: $" + data["balance"])
+
+                        else:
+                            input("enter to continue")
+
+                #slot 3
+                else:
+                    if data["wallet_slot_three"] == "":
+                        print("slot does not exist")
+
+                    else:
+                        print("are you sure you want to delete " + data["wallet_slot_three"] + "?")
+                        print("Note: all money will be moved from " + data["wallet_slot_three"] + " to savings")
+                        print("""
+1. yes
+2. no                       
+                        """)
+                        confirmation = get_valid_selection("confirmation: ", ["1", "2"])
+
+                        if confirmation == "1":
+                            data["wallet_slot_three"] = ""
+
+                            data["balance"] += data["slot_three_balance"]
+                            data["slot_three_balance"] -= data["slot_three_balance"]
+
+                            print("slot three successfully deleted")
+                            print("your new savings balance is: $" + data["balance"])
 
 
     # Goal
