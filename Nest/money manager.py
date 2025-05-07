@@ -341,9 +341,10 @@ SELECT FUNCTION
         selection_i = get_valid_selection("choose an option", ["1", "2"])
         
         #create wallet
+        #TODO: add all the other wallet combos (2 and 3, 1 and 3, just 1 etc.)
         if selection_i == "1":
 
-            if data["wallet_slot_one"] and data["wallet_slot_two"] and data["wallet_slot_three"]:
+            if data["wallet_slot_one"] and data["wallet_slot_two"] and data["wallet_slot_three"] == "":
                 print("""
 Please Select a Slot
     1. Slot One
