@@ -336,12 +336,13 @@ SELECT FUNCTION
 """)
         selection_i = get_valid_selection("choose an option", ["1", "2"])
 
-        #TODO: make a comfermation function; comferm you like to create a slot called_____?
+        #create slot
         if selection_i == "1":
             print("Select a slot")
+
             print("1. " + data["wallet_slot_one"])
             print("2. " + data["wallet_slot_two"])
-            print("2. " + data["wallet_slot_three"]) 
+            print("3. " + data["wallet_slot_three"]) 
 
             selection_j = get_valid_selection("choose an option", ["1", "2", "3"])
 
@@ -362,6 +363,43 @@ SELECT FUNCTION
                 data["wallet_slot_three"] = input("Name Slot: ")
 
                 print("new slot named " + data["wallet_slot_three"] + " has been created")
+
+        #remove slot
+        else:
+            print("Select a slot to remove")
+
+            print("1. " + data["wallet_slot_one"])
+            print("2. " + data["wallet_slot_two"])
+            print("3. " + data["wallet_slot_three"])
+
+            selection_k = get_valid_selection("choose an option: ", ["1", "2", "3"])
+
+            #slot one
+            if selection_k == "1":
+                if data["wallet_slot_one"] == "empty slot one":
+                    print("slot is empty")
+
+                else:
+                    print("are you sure you want to delete " + data("wallet_slot_one") + "?")
+                    print("""
+1. Yes
+2. No
+""")
+                    confirm = get_valid_selection("confirmation: " ["1", "2"])
+
+                    if confirm == "1":
+                        data["wallet_slot_one"] == "empty slot one"
+
+                        data["balance"] += data["slot_one_balance"]
+                        data["slot_one_balance"] -= data["slot_one_balance"]
+
+                        print("slot one deleted")
+                        
+                    else:
+                        input("Enter to continue")
+
+                
+                    
 
 
 
