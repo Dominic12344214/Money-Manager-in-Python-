@@ -389,7 +389,7 @@ SELECT FUNCTION
 1. Yes
 2. No
 """)
-                    confirm = get_valid_selection("confirmation: " ["1", "2"])
+                    confirm = get_valid_selection("confirmation: ", ["1", "2"])
 
                     if confirm == "1":
                         data["wallet_slot_one"] = "empty slot one"
@@ -414,7 +414,7 @@ SELECT FUNCTION
 2. no                                      
                    """)
                    #comfermation
-                   confirm = get_valid_selection("confirmation: " ["1", "2"])
+                   confirm = get_valid_selection("confirmation: ", ["1", "2"])
 
                    if confirm == "1":
                         data["wallet_slot_two"] = "empty slot two"
@@ -436,7 +436,7 @@ SELECT FUNCTION
 1. yes
 2. no                   
                     """)
-                    confirm = get_valid_selection("confirmation: " ["1", "2"])
+                    confirm = get_valid_selection("confirmation: ", ["1", "2"])
 
                     if confirm == "1":
                         data["wallet_slot_three"] = "empty slot three"
