@@ -383,6 +383,7 @@ SELECT FUNCTION
                     print("slot is empty")
 
                 else:
+                    #comfermation
                     print("are you sure you want to delete " + data["wallet_slot_one"] + "?")
                     print("""
 1. Yes
@@ -412,6 +413,7 @@ SELECT FUNCTION
 1. yes
 2. no                                      
                    """)
+                   #comfermation
                    confirm = get_valid_selection("confirmation: " ["1", "2"])
 
                    if confirm == "1":
@@ -428,6 +430,7 @@ SELECT FUNCTION
                     print("slot is empty")
 
                 else:
+                    #comfermation
                     print("are you sure you want to delete " + data["wallet_slot_three"] + "?")
                     print("""
 1. yes
