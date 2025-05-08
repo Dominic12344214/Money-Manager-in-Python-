@@ -71,7 +71,9 @@ def get_valid_selection(prompt, valid_options):
 
 
 # Main Loop
+#TODO: add custom wallets to "start"
 while True:
+    #start page
     print("\n==============================")
     print(f"Your savings balance is: ${data['balance']:.2f}")
     print(f"Your spending balance is: ${data['spending_balance']:.2f}")
@@ -99,33 +101,85 @@ SELECT FUNCTION
 1. Add to savings
 2. Add to spending
 3. Add to goals
-4. Split
+4. Add to custom wallet
+5. Split
 """)
 
-        selection_c = get_valid_selection("Choose an option: ", ["1", "2", "3", "4"])
-
+        selection_c = get_valid_selection("Choose an option: ", ["1", "2", "3", "4", "5"])
+        #savings
         if selection_c == "1":
             amount = get_valid_float("Add money: $")
             data["balance"] += amount
 
             print(f"Your new balance is: ${data['balance']:.2f}")
 
-
+        #spending
         elif selection_c == "2":
             amount = get_valid_float("Add money: $")
             data["spending_balance"] += amount
 
             print(f"Your new spending balance is: ${data['spending_balance']:.2f}")
 
-
+        #goals
         elif selection_c == "3":
             amount = get_valid_float("Add money: $")
             data["goal_wallet"] += amount
 
             print(f"Your new goal balance is: ${data['goal_wallet']:.2f}")
 
-
+        #custom wallet
         elif selection_c == "4":
+            print("Choose a wallet")
+            print("1. " + data["wallet_slot_one"])
+            print("2. " + data["Wallet_slot_two"])
+            print("3. " + data["wallet_slot_three"])
+
+            selection_l = get_valid_selection("choose an option:  ", ["1", "2", "3"])
+
+            #slot one
+            if selection_l == "1":
+                if data["wallet_slot_one"] == "empty slot one":
+                    print("slot not in use")
+
+                    input("enter to continue")
+
+                else:
+                    to_slot_one = get_valid_float("How much: ")
+
+                    data["slot_one_balance"] += to_slot_one
+
+                    print(f"your new balance is: ${data["slot_one_balance"]:.2f}")
+
+            #slot two
+            elif selection_l == "2":
+                if data["wallet_slot_two"] == "empty slot two":
+                    print("slot not in use")
+
+                    input("enter to continue")
+
+                else:
+                    to_slot_two = get_valid_float("how much: ")
+
+                    data["slot_two_balance"] += to_slot_two
+
+                    print(f"your new balance is: ${data["slot_two_balace"]:.2f}")
+
+            #slot three
+            else:
+                if data["wallet_slot_three"] == "empty slot two":
+                    print("slot not in use")
+
+                    input("enter to continue")
+
+                else:
+                    to_slot_three = get_valid_float("how much: ")
+
+                    data["slot_three_balance"] += to_slot_three
+
+                    print(f"your new balance is: ${data["slot_three_balance"]:.2f}")
+
+        #split
+        elif selection_c == "5":
             print("\nThe following percentages must add up to 100.\n")
 
             try:
