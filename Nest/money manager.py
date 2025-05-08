@@ -392,7 +392,7 @@ SELECT FUNCTION
                     confirm = get_valid_selection("confirmation: " ["1", "2"])
 
                     if confirm == "1":
-                        data["wallet_slot_one"] == "empty slot one"
+                        data["wallet_slot_one"] = "empty slot one"
 
                         data["balance"] += data["slot_one_balance"]
                         data["slot_one_balance"] -= data["slot_one_balance"]
