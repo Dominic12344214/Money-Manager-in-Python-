@@ -275,10 +275,25 @@ SELECT FUNCTION
             elif selection_m == "2":
                 if data["wallet_slot_two"] == "empty slot two":
                     print("slot is not in use")
-                
 
+                else:
+                    if amount > data["slot_two_balance"]:
+                        print("insufisint funds")
 
+                    else:
+                        data["slot_two_balance"] -= amount
 
+                        print(f"your new balnce is: :{data["slot_two_balance"]:.2f}")
+
+            else:
+                if data["wallet_slot_three"] == "empty slot three":
+                    print("slot not in use")
+
+                else:
+                    if amount > data["slot_three_balance"]:
+                        data["slot_three_balance"] -= amount
+
+                        print(f"your new balance is: ${data["slot_three_balance"]:.2f}")
 
 
         save_data()
