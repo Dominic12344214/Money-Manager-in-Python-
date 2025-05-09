@@ -130,9 +130,9 @@ SELECT FUNCTION
         #custom wallet
         elif selection_c == "4":
             print("Choose a wallet")
-            print("1. " + data["wallet_slot_one"])
-            print("2. " + data["Wallet_slot_two"])
-            print("3. " + data["wallet_slot_three"])
+            print("1. " + {data["wallet_slot_one"]})
+            print("2. " + {data["Wallet_slot_two"]})
+            print("3. " + {data["wallet_slot_three"]})
 
             selection_l = get_valid_selection("choose an option:  ", ["1", "2", "3"])
 
@@ -217,6 +217,7 @@ SELECT FUNCTION
 1. Remove from savings
 2. Remove from goal wallet
 3. Remove from spending
+4. Custom wallet
 """)
 
         selection_b = get_valid_selection("Choose an option: ", ["1", "2", "3"])
@@ -247,6 +248,38 @@ SELECT FUNCTION
             else:
                 data["spending_balance"] -= amount
                 print(f"Your new spending balance is: ${data['spending_balance']:.2f}")
+
+        else:
+            print("Choose a wallet")
+            print("1. " + {data["wallet_slot_one"]})
+            print("2. " + {data["wallet_slot_two"]})
+            print("3. " + {data["wallet_slot_three"]})
+
+            selection_m = get_valid_selection("choose an option: ", ["1", "2", "3"])
+
+            if selection_m == "1":
+                if data["wallet_slot_one"] == "empty slot one":
+                    print("slot not in use")
+
+                    input("enter to contiue")
+
+                else:
+                    if amount > data["slot_one_balance"]:
+                        print("insufisint funds")
+
+                    else:
+                        data["slot_one_balance"] -= amount
+
+                        print(f"your new balance is: {data["slot_one_balance"]:.2f}")
+
+            elif selection_m == "2":
+                if data["wallet_slot_two"] == "empty slot two":
+                    print("slot is not in use")
+                
+
+
+
+
 
         save_data()
         input("Press Enter to continue...")
