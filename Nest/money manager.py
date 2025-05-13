@@ -80,14 +80,15 @@ while True:
     print(f"Your goal balance is: ${data['goal_wallet']:.2f}")
 
     if data["wallet_slot_one"] != "empty slot one":
-        print(data["wallet_slot_one"] + " balance" + f"{data["slot_one_balance"]:.2f}")
+        print(data["wallet_slot_one"] + " balance $" + f"{data['slot_one_balance']:.2f}")
 
     if data["wallet_slot_two"] != "empty slot two":
-        print(data["wallet_slot_two"] + " balance" + f"{data["slot_two_balance"]:.2f}")
+        print(data["wallet_slot_two"] + " balance $" + f"{data['slot_two_balance']:.2f}")
+
 
     if data["wallet_slot_three"] != "empty slot three":
-        print(data["wallet_slot_three"] + " balance" + f"{data["slot_three_balance"]:.2f}")
-        
+        print(data["wallet_slot_three"] + " balance $" + f"{data['slot_three_balance']:.2f}")
+
     print("==============================\n")
 
     print("""
@@ -176,7 +177,7 @@ SELECT FUNCTION
 
             #slot three
             else:
-                if data["wallet_slot_three"] == "empty slot two":
+                if data["wallet_slot_three"] == "empty slot three":
                     print("slot not in use")
 
                     input("enter to continue")
@@ -230,7 +231,8 @@ SELECT FUNCTION
 4. Custom wallet
 """)
 
-        selection_b = get_valid_selection("Choose an option: ", ["1", "2", "3"])
+        selection_b = get_valid_selection("Choose an option: ", ["1", "2", "3", "4"])
+
         amount = get_valid_float("Remove money: $")
 
         if selection_b == "1":
