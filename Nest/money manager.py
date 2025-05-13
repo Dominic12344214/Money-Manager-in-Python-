@@ -80,7 +80,7 @@ while True:
     print(f"Your goal balance is: ${data['goal_wallet']:.2f}")
 
     if data["wallet_slot_one"] != "empty slot one":
-        print(data["wallet_slot_one"] + " balance" + f"{data["slot one balance"]:.2f}")
+        print(data["wallet_slot_one"] + " balance" + f"{data["slot_one_balance"]:.2f}")
 
     if data["wallet_slot_two"] != "empty slot two":
         print(data["wallet_slot_two"] + " balance" + f"{data["slot_two_balance"]:.2f}")
