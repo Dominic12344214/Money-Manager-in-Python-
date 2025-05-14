@@ -454,13 +454,13 @@ SELECT FUNCTION
 
         #create slot
         if selection_i == "1":
-            print("Select a slot")
 
             print("1. " + data["wallet_slot_one"])
             print("2. " + data["wallet_slot_two"])
             print("3. " + data["wallet_slot_three"]) 
+            print("")
 
-            selection_j = get_valid_selection("choose an option", ["1", "2", "3"])
+            selection_j = get_valid_selection("choose an option: ", ["1", "2", "3"])
 
             #slot one
             if selection_j == "1":
