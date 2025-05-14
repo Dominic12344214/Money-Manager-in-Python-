@@ -5,7 +5,6 @@ import os
 DATA_FILE = "nest_data.json"
 
 # Default values
-#TODO add all values into nest_data.json ONCE TESTING IS OVER
 data = {
     #defalt wallets
     "balance": 0.00,
