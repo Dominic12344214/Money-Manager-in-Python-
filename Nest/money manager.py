@@ -222,7 +222,7 @@ while True:
 
 
     # Remove money
-    #TODO: add custom wallets
+
     elif selection == "2":
         print("""
 1. Remove from savings
