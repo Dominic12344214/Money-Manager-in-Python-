@@ -69,31 +69,32 @@ def get_valid_selection(prompt, valid_options):
 
 
 
+
 # Main Loop
-#TODO: add custom wallets to "start"
 while True:
-    #start page
+    # start page
     print("\n==============================")
     print(f"Your savings balance is: ${data['balance']:.2f}")
     print(f"Your spending balance is: ${data['spending_balance']:.2f}")
     print(f"Your goal balance is: ${data['goal_wallet']:.2f}")
 
     if data["wallet_slot_one"] != "empty slot one":
+        print("")
         print(data["wallet_slot_one"] + " balance $" + f"{data['slot_one_balance']:.2f}")
 
     if data["wallet_slot_two"] != "empty slot two":
+        if data["wallet_slot_one"] == "empty slot one":
+            print("")
         print(data["wallet_slot_two"] + " balance $" + f"{data['slot_two_balance']:.2f}")
 
-
     if data["wallet_slot_three"] != "empty slot three":
+        if data["wallet_slot_one"] == "empty slot one" and data["wallet_slot_two"] == "empty slot two":
+            print("")
         print(data["wallet_slot_three"] + " balance $" + f"{data['slot_three_balance']:.2f}")
 
     print("==============================\n")
 
-    print("""
-          
-
-SELECT FUNCTION
+    print("""SELECT FUNCTION
 1. Add money
 2. Remove money
 3. transfer money
@@ -102,10 +103,10 @@ SELECT FUNCTION
 6. Exit
 """)
 
+
     selection = get_valid_selection("Enter number corresponding with function: ", ["1", "2", "3", "4", "5", "6"])
 
     # Add money
-    #TODO: add custom wallets
     if selection == "1":
         print("""
 1. Add to savings
@@ -344,6 +345,7 @@ SELECT FUNCTION
                     print(f"Your new balance is: ${data['balance']:.2f}")
                     print(f"Your new spending balance is: ${data['spending_balance']:.2f}")
 
+                    save_data()
                     input("enter to continue")
 
             elif selection_f == "2":
@@ -359,6 +361,7 @@ SELECT FUNCTION
                     print(f"your new balance is: ${data["balance"]:.2f}")
                     print (f"your new goal balance is: ${data["goal_wallet"]:.2f}")
 
+                    save_data()
                     input("enter to continue")
 
         #from spending
@@ -383,7 +386,8 @@ SELECT FUNCTION
                     
                     print(f"your new spending balance is: ${data["spending_balance"]:.2f}")
                     print(f"your new saving balance is: ${data["balance"]:.2f}")
-                    
+
+                    save_data()
                     input("enter to continue")
                     
             #spending to goals
@@ -399,7 +403,8 @@ SELECT FUNCTION
                     
                     print(f"your new spending balance is: ${data["spending_balance"]:.2f}")
                     print(f"your new goal balance is: ${data["goal_wallet"]:.2f}")
-                    
+
+                    save_data()
                     input("enter to continue")
                 
         #from goals
@@ -424,7 +429,8 @@ SELECT FUNCTION
                     
                     print(f"your new goal balance is: ${data["goal_wallet"]:.2f}")
                     print(f"your new savings balance is: ${data["balance"]:.2f}")
-                    
+
+                    save_data()
                     input("enter to continue")
                     
             #goal to spending
@@ -440,7 +446,8 @@ SELECT FUNCTION
                     
                     print(f"your new goal balance is: ${data["goal_wallet"]:.f2}")
                     print(f"your new spending balance is: ${data["spending_balance"]:.f2}")
-                    
+
+                    save_data()
                     input("enter to continue")
 
 
@@ -450,11 +457,11 @@ SELECT FUNCTION
 1. Create Wallet
 2. Remove wallet
 """)
-        selection_i = get_valid_selection("choose an option", ["1", "2"])
+        selection_i = get_valid_selection("choose an option: ", ["1", "2"])
 
         #create slot
         if selection_i == "1":
-
+            print("")
             print("1. " + data["wallet_slot_one"])
             print("2. " + data["wallet_slot_two"])
             print("3. " + data["wallet_slot_three"]) 
@@ -468,11 +475,15 @@ SELECT FUNCTION
                 
                 print("new slot named " + data["wallet_slot_one"] + " has been created")
 
-            #slot two
+                save_data()
+
+                #slot two
             elif selection_j == "2":
                 data["wallet_slot_two"] = input("Name slot: ")
 
                 print("new slot named " + data["wallet_slot_two"] + " has been created")
+
+                save_data()
 
             #slot three
             else:
@@ -480,13 +491,15 @@ SELECT FUNCTION
 
                 print("new slot named " + data["wallet_slot_three"] + " has been created")
 
+                save_data()
+
         #remove slot
         else:
-            print("Select a slot to remove")
-
+            print("")
             print("1. " + data["wallet_slot_one"])
             print("2. " + data["wallet_slot_two"])
             print("3. " + data["wallet_slot_three"])
+            print("")
 
             selection_k = get_valid_selection("choose an option: ", ["1", "2", "3"])
 
@@ -511,6 +524,8 @@ SELECT FUNCTION
                         data["slot_one_balance"] -= data["slot_one_balance"]
 
                         print("slot one deleted")
+
+                        save_data()
                         
                     else:
                         input("Enter to continue")
@@ -537,6 +552,8 @@ SELECT FUNCTION
 
                         print("slot two deleted")
 
+                        save_data()
+
             #slot three
             else:
                 if data["wallet_slot_three"] == "empty slot three":
@@ -558,6 +575,8 @@ SELECT FUNCTION
                         data["slot_three_balance"] -= data["slot_three_balance"]
 
                         print("slot three deleted")
+
+                        save_data()
 
                     else:
                         input("Enter to continue")
